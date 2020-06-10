@@ -27,11 +27,11 @@ visdat::vis_dat(data) # no missing data
 
 # Visualization
 ggplot(data, aes(x = TV, y = sales)) +
-    geom_point() +
-    stat_smooth(colour = "red") +
-    ggtitle("TV vs SALES") + font("title", size = 29) +
-    ylab("Sales") + font("ylab", size = 20) +
-    xlab("TV Advertisement Budget(000)") + font("xlab", size = 20)
+  geom_point() +
+  stat_smooth(colour = "red") +
+  ggtitle("TV vs SALES") + font("title", size = 29) +
+  ylab("Sales") + font("ylab", size = 20) +
+  xlab("TV Advertisement Budget(000)") + font("xlab", size = 20)
 #The graph above suggests a linearly increasing relationship between the sales and the TV advertising budget variables
 
 # Simple correlation.
@@ -55,9 +55,9 @@ lm.fit
 # The equation is: sales ~ 7.03259 + 0.04754 TV
 
 ggplot(data, aes(x = TV, y = sales,, colour = "red")) + geom_point() + stat_smooth(method = lm, colour = "blue")+
-    ggtitle("Regression: TV vs SALES") + font("title", size = 29) +
-    ylab("Sales") + font("ylab", size = 20) +
-    xlab("TV Advertisement Budget(000)") + font("xlab", size = 20)
+  ggtitle("Regression: TV vs SALES") + font("title", size = 29) +
+  ylab("Sales") + font("ylab", size = 20) +
+  xlab("TV Advertisement Budget(000)") + font("xlab", size = 20)
 
 # _________________________________________________________
 # MODEL ASSESMENT(Quality of the model)
@@ -83,7 +83,7 @@ summary(lm.fit)$coefficient
 # Confidence Interval for the model:
 confint(lm.fit)
 # That is, there is approximately a 95% chance that the interval [0.042, 0.053] will contain the true value of b1
- 
+
 
 #_______________________________________________________
 # MODEL ACCURACY
@@ -103,7 +103,7 @@ cat("RSE: ",sigma(lm.fit), "\n")
 # Actual sales in each market deviate from the true regression line by approximately 3,259 units, on average.
 
 # Prediction Error rate.
-# It’s a measure of how well the model predicts the response variable.
+# It's a measure of how well the model predicts the response variable.
 # It is found by diving the RSE by the mean of sales: (RSE/mean(sales):
 cat("PE:",sigma(lm.fit)/mean(sales), "\n") # 23% error rate
 
