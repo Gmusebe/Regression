@@ -6,11 +6,25 @@ From the **Advertisement Budget** data, our independent variables are TV, radio 
 Linear regression is the most simple and popular technique for predicting a continuous variable. It assumes a linear relationship between the outcome and the predictor variables.
 
 For the simple linear regression (using one independent variable to predict an outcome of another) the equation can be written as:
+
 **y = b0 + b*x**, where:
+
   b0 is the intercept,
+
   b is the regression weight or coefficient associated with the predictor variable x.
 
 The multiple linear regression equation, where a number of independent variables  are used to predict an outcome variable (y) is writte as:
+
 **y = b0 + b1*x1 + b2*x2 + ...+ bn*xn**, where:
-  b0 is the intercept,
-  b1, b2, ..., bn is the regression weights or coefficients associated with the predictor variable x1, x2, ..., xn.
+
+b0 is the intercept,
+
+b1, b2, ..., bn is the regression weights or coefficients associated with the predictor variable x1, x2, ..., xn.
+
+The below question are used to help analyse the *Model Efficiency* in predictice analaysis:
+  1. Is there a relationship between advertising sales and budget?
+  2. How strong is the relationship?
+  3. Which media contribute to sales?
+  4. How large is the effect of each medium on sales?
+  5. How accurately can we predict future sales? and 
+  6. Is the relationship linear?
