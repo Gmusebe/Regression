@@ -21,7 +21,7 @@ ins_data$smoker <- as.factor(ins_data$smoker)
 unique(ins_data$region)
 
 # Correlation:
-ggcorrplot(round(cor(ins_data), 1), hc.order = TRUE, type = "lower", 
+ggcorrplot(round(cor(ins_data[, -c(2,5,6)]), 1), hc.order = TRUE, type = "lower", 
            outline.col = "white",
            ggtheme = ggpubr::theme_pubclean(),
            colors = c("#6D9EC1", "white", "#E46726"),
@@ -45,10 +45,10 @@ summary(lm.fit)
 predictions <- lm.fit %>% predict(Validation.data)
 
 # Model performance:
-data.frame(RMSE = RMSE(predictions, Validation.data$charges), #6034.628
-           R2 = R2(predictions, Validation.data$charges), # .75623
-           MAE = MAE(predictions, Validation.data$charges), #4145.767
-           PER = RMSE(predictions, Validation.data$charges)/mean(Validation.data$charges)) #.4498633
+data.frame(RMSE = RMSE(predictions, Validation.data$charges), 
+           R2 = R2(predictions, Validation.data$charges), 
+           MAE = MAE(predictions, Validation.data$charges), 
+           PER = RMSE(predictions, Validation.data$charges)/mean(Validation.data$charges)) 
 
 ### Improving the model 
 library(leaps)
@@ -73,7 +73,7 @@ set.seed(123)
  
  # Plot RSS, adjusted R2, Cp, and BIC for all of the models
 theme_set(theme_pubr())
- par(mfrow = c(2, 2))
+# par(mfrow = c(2, 2))
  
 plot(summary_sub_fit$rss,
      xlab = "NUmber of Variables",
@@ -106,7 +106,8 @@ plot(summary_sub_fit$adjr2,
 # From the above, by adjusted R2 the most efficient model is the one with the age, bmi, children & smoker and region(each as a dummy variable).
  
 # To check for consistency:
- layout(matrix(1:2), ncol =2)
+library(car)
+#layout(matrix(1:2), ncol =2)
  
  res.legend <- 
     subsets(sub_fit, statistic = "adjr2", legend = FALSE, min.size = 5, main = "Adjusted R^2")
